@@ -56,7 +56,7 @@ Downloads and analyzes a competitor's entire historical dataset to reveal long-t
 
 ## Interface Showcase
 
-Detailed screenshots demonstrating the application's dashboards, data tables, and NLP clustering interfaces can be found in the [`Screenshots/`](./Screenshots) directory.
+Detailed screenshots demonstrating the application's dashboards, data tables, and NLP clustering interfaces can be found in the [`screenshots/`](./screenshots) directory.
 
 ## Technical Impact
 
