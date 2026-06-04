@@ -4,6 +4,28 @@
 
 ## Overview
 
+<p align="center">
+  <img src="screenshots/Screenshot-1.png" width="800" alt="Overview">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-2.png" width="800" alt="Overview1">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-3.png" width="800" alt="Overview2">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-4.png" width="800" alt="Overview3">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-5.png" width="800" alt="Overview4">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-6.png" width="800" alt="Overview5">
+</p>
+<p align="center">
+  <img src="screenshots/Screenshot-7.png" width="800" alt="Overview6">
+</p>
+
 A high-performance desktop application built with **Python** and **PyQt6**, designed for the large-scale extraction, processing, and semantic analysis of YouTube metadata. 
 
 The system acts as a complete local pipeline: it handles concurrent web scraping, processes the unstructured data using local Natural Language Processing (NLP) models, and provides an interactive GUI for Exploratory Data Analysis. It was built to replace manual market research with automated, data-driven quantitative insights.
