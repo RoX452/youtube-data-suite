@@ -1,89 +1,62 @@
-# Automated YouTube Data Extraction & NLP Analysis Suite
+# YouTube Data Suite
 
-> **Note:** The source code for this repository is currently closed-source as it is part of an active proprietary toolset. This README serves as a technical showcase of the software's architecture, data pipelines, and engineering solutions.
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
+![PyQt6](https://img.shields.io/badge/GUI-PyQt6-green.svg)
+![AI](https://img.shields.io/badge/AI-CrewAI%20%7C%20Gemini%20%7C%20RAG-orange.svg)
 
-## Overview
+High-performance desktop suite for YouTube data analysis. Built with Python and PyQt6, this tool goes beyond traditional scraping by integrating an Autonomous Multi-Agent System (CrewAI) and a Retrieval-Augmented Generation (RAG) pipeline to extract, process, and analyze massive amounts of video metrics autonomously.
 
-<p align="center">
-  <img src="screenshots/Screenshot-1.png" width="800" alt="Overview">
-</p>
-<p align="center">
-  <img src="screenshots/Screenshot-2.png" width="800" alt="Overview1">
-</p>
-<p align="center">
-  <img src="screenshots/Screenshot-3.png" width="800" alt="Overview2">
-</p>
-<p align="center">
-  <img src="screenshots/Screenshot-4.png" width="800" alt="Overview3">
-</p>
-<p align="center">
-  <img src="screenshots/Screenshot-5.png" width="800" alt="Overview4">
-</p>
-<p align="center">
-  <img src="screenshots/Screenshot-6.png" width="800" alt="Overview5">
-</p>
-<p align="center">
-  <img src="screenshots/Screenshot-7.png" width="800" alt="Overview6">
-</p>
+## Key Features
 
-A high-performance desktop application built with **Python** and **PyQt6**, designed for the large-scale extraction, processing, and semantic analysis of YouTube metadata. 
+### Multi-Agent AI Architecture
+- **Agentic Workflows:** Powered by CrewAI and the Gemini API, the system orchestrates specialized agents (Data Analysts, Niche Researchers) to perform multi-step reasoning over extracted YouTube data.
+- **RAG & Vector Search:** Uses FAISS and local HuggingFace embeddings (all-MiniLM-L6-v2) to provide the LLM with instant, cost-effective access to local databases without blowing up API token limits.
+- **Custom Tools:** Agents are equipped with natively programmed Python tools to execute SQL queries and manipulate complex Pandas DataFrames autonomously.
 
-The system acts as a complete local pipeline: it handles concurrent web scraping, processes the unstructured data using local Natural Language Processing (NLP) models, and provides an interactive GUI for Exploratory Data Analysis. It was built to replace manual market research with automated, data-driven quantitative insights.
+### Advanced Data Extraction
+- **Bulk Scraping:** High-speed extraction of YouTube metrics (Views, Likes, Comments, Upload Dates, Transcripts).
+- **Trend Detection:** Automatically groups and categorizes niches based on performance metrics.
+- **ETL Pipeline:** Cleans and structures raw data into SQLite databases and CSV files for immediate analysis.
 
-## Tech Stack & Libraries
+### Desktop GUI (PyQt6)
+- **Interactive Dashboards:** Visualize trends, filter by keywords, and interact with the AI agents directly from a modern, responsive desktop interface.
+- **Asynchronous Processing:** Non-blocking UI design ensures the application remains fluid even during heavy data extraction and AI processing tasks.
 
-* **Core:** Python 3.10+
-* **GUI & Concurrency:** `PyQt6` (Custom widgets, non-blocking UI), `QThread`, `ThreadPoolExecutor`.
-* **Data Extraction:** `yt-dlp` (Advanced wrapper with process management), `requests`, `subprocess`.
-* **Data Processing & EDA:** `pandas`, `numpy`, `Matplotlib` (Integrated into Qt).
-* **Machine Learning (NLP):** `KeyBERT`, `Sentence-Transformers`, `YAKE`, `TextBlob`.
-* **Deployment:** `PyInstaller` for standalone distribution.
+## Tech Stack
 
-## System Architecture
+- **Backend:** Python, Pandas, SQLite, yt-dlp
+- **AI & NLP:** CrewAI, Gemini API, FAISS, SentenceTransformers
+- **Frontend (GUI):** PyQt6
+- **Architecture:** Multi-Agent System, RAG (Retrieval-Augmented Generation)
 
-The application follows a modular, event-driven architecture to ensure stability during intensive scraping tasks:
+## Installation
 
-1.  **Presentation Layer (Frontend):**
-    * Tab-based navigation system with dynamic data tables.
-    * Interactive dashboards for channel and niche analysis natively integrated via Matplotlib.
+1. Clone the repository:
+```bash
+git clone https://github.com/RoX452/youtube-data-suite.git
+cd youtube-data-suite
+```
 
-2.  **Business Logic & Workers (Backend):**
-    * **Scraping Engine:** Dedicated worker threads (`QThread`) manage `yt-dlp` subprocesses to extract metadata, transcripts, and real-time statistics without blocking the main event loop.
-    * **NLP Processor:** Lazy-loaded NLP models (`importlib`) that perform semantic clustering and sentiment analysis, optimizing initial memory consumption.
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-3.  **Deployment & Environment Layer:**
-    * **Hybrid Environment Management:** Context-aware path resolution handling both development (Python script) and production (PyInstaller frozen executable) environments seamlessly.
-    * Intelligent local caching system for thumbnails and metadata to minimize API/bandwidth usage.
+3. Set up your environment variables (Add your Gemini API Key):
+```bash
+# Create a .env file in the root directory
+GEMINI_API_KEY=your_api_key_here
+```
 
-## Core Features
+4. Run the application:
+```bash
+python main.py
+```
 
-### 1. Concurrent Data Extraction Pipeline
-Bulk extraction of video metadata based on complex queries or channel URLs. 
-* Implements robust error handling strategies, including browser cookie injection for authentication and advanced rate-limit avoidance (HTTP 429/403).
-* Handles pagination and concurrent threading gracefully while supporting specific filters (Shorts, VODs, Live Streams).
+## Screenshots & Demo
 
-### 2. NLP-Based Semantic Clustering
-Utilizes local language models (`Sentence-Transformers`) to calculate cosine similarity and find hidden relationships between videos. 
-* Groups content by semantic similarity rather than exact keyword matches.
-* Extracts core topics and sentiment from video transcripts using `KeyBERT` and `TextBlob`.
+*(Add your UI screenshots and application GIFs here to show the agents in action!)*
 
-### 3. Exploratory Data Analysis (EDA) Dashboard
-Built-in visualization tools for immediate quantitative analysis:
-* **Outlier Detection:** Identifies videos that statistically deviate from a channel's standard performance baseline.
-* **Temporal Heatmaps:** Visualizes historical publishing patterns and performance density.
-* **Performance Metrics:** Calculates custom ratios (e.g., View-to-Subscriber velocity) to identify trending topics.
-
-### 4. Reverse Engineering & Historical Archiving
-Downloads and analyzes a competitor's entire historical dataset to reveal long-term content strategies, tag evolution, and retention metrics. Supports local media archiving (Video/Audio/Subtitles) for offline processing.
-
-## Interface Showcase
-
-Detailed screenshots demonstrating the application's dashboards, data tables, and NLP clustering interfaces can be found in the [`screenshots/`](./screenshots) directory.
-
-## Technical Impact
-
-* Built a non-blocking GUI that safely handles thousands of concurrent data points without freezing the main thread.
-* Automated a complex data pipeline, reducing a multi-hour manual Exploratory Data Analysis process to a sub-minute script.
-* Successfully integrated local deep learning modelsinto a distributable desktop environment for offline, privacy-first analysis..
-
-*Developed by Rogger Efrain Paucar Oviedo*
+---
+*Developed by [Rogger Efrain Paucar Oviedo](https://github.com/RoX452)*
