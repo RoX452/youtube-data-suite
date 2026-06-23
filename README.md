@@ -50,7 +50,8 @@ The application follows a modular, event-driven architecture to ensure stability
 
 2.  **Business Logic & Workers (Backend):**
     * **Scraping Engine:** Dedicated worker threads (`QThread`) manage `yt-dlp` subprocesses to extract metadata, transcripts, and real-time statistics without blocking the main event loop.
-    * **NLP & Agentic Processor:** Lazy-loaded NLP models (`importlib`) and autonomous multi-agent workflows (`CrewAI`) that perform semantic clustering, niche research, and advanced data processing.
+    * **NLP Processor:** Lazy-loaded NLP models (`importlib`) that perform semantic clustering, keyword extraction, and trend detection.
+    * **Agentic Workflow Engine:** Autonomous multi-agent workflows (`CrewAI`) connected to the local databases to query SQLite, manipulate Pandas DataFrames, and autonomously analyze the extracted metrics.
 
 3.  **Deployment & Environment Layer:**
     * **Hybrid Environment Management:** Context-aware path resolution handling both development (Python script) and production (PyInstaller frozen executable) environments seamlessly.
